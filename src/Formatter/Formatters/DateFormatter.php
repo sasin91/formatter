@@ -2,9 +2,10 @@
 
 namespace CollabCorp\Formatter\Formatters;
 
+use CollabCorp\Formatter\Formatter;
 use Illuminate\Support\Carbon;
 
-class DateFormatter extends BaseFormatter
+class DateFormatter extends Formatter
 {
 
     /**

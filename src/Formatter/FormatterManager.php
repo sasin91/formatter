@@ -2,7 +2,7 @@
 
 namespace CollabCorp\Formatter;
 
-use CollabCorp\Formatter\Formatters\BaseFormatter;
+use CollabCorp\Formatter\Formatter;
 use CollabCorp\Formatter\Formatters\DateFormatter;
 use CollabCorp\Formatter\Formatters\MathFormatter;
 use CollabCorp\Formatter\Formatters\StringFormatter;
@@ -70,7 +70,7 @@ class FormatterManager extends Manager
 
     public function createDefaultDriver()
     {
-    	return new BaseFormatter;
+    	return new Formatter;
     }
 
 	public function createMathDriver()

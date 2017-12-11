@@ -2,6 +2,8 @@
 
 namespace CollabCorp\Formatter;
 
+use CollabCorp\Formatter\Exceptions\FormatterException;
+
 class Proxy
 {
     /**
@@ -10,6 +12,8 @@ class Proxy
      * @param  string $method
      * @param  mixed $parameters
      * @param  object | null $previous [The previous formatter or value]
+     * 
+     * @throws \CollabCorp\Formatter\Exceptions\FormatterException
      * @return mixed
      */
     public static function call($method, $parameters, $previous = null)
@@ -18,14 +22,10 @@ class Proxy
 
         $formatter = Formatter::implementing($method);
 
-        if (is_null($formatter)) {
-            throw new \Exception("No formatter implements [{$method}].");
-        }
+        throw_if(is_null($formatter), FormatterException::notFound($method));
 
-        if ($previous) {
-            $formatter->setValue(is_callable($previous) ? $previous() : $previous);
-        }
-
-        return $formatter->$method(...$parameters);
+        return $formatter
+            ->newInstance(is_callable($previous) ? $previous() : $previous)
+            ->$method(...$parameters);
     }
 }

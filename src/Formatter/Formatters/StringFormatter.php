@@ -2,10 +2,11 @@
 
 namespace CollabCorp\Formatter\Formatters;
 
-use Illuminate\Support\Str;
+use CollabCorp\Formatter\Formatter;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Str;
 
-class StringFormatter extends BaseFormatter
+class StringFormatter extends Formatter
 {
 
     /**

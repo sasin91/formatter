@@ -2,7 +2,9 @@
 
 namespace CollabCorp\Formatter\Formatters;
 
-class MathFormatter extends BaseFormatter
+use CollabCorp\Formatter\Formatter;
+
+class MathFormatter extends Formatter
 {
 
     /**
